@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/master"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_MASTER")
+}
+
+// contoh relasi many to many tanpa reference / relasi yang jelas
+// hanya menggunakan array []
+// yang menghasilkan tabel ke 3 _ArticleToTag secara otomatis dan bersifat tersembunyi apabila dibuka melalui prisma studio
+// kolom relasi yang diefinisikan adalah kolom A merepresentasikan Articles dan kolom B merepresentasikan Tag
+model Article {
+  id         Int       @id @default(autoincrement())
+  title      String
+  body       String
+  slug       String    @unique
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  tags       Tag[]     // Relasi ke Tag (many-to-many)
+  status     Int       @default(1)
+}
+
+model Tag {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  articles  Article[]  // Relasi ke Article (many-to-many)
+}
+
+// contoh relasi many to many antara user dan role dengan tabel referensi relasi yang jelas
+// tabel ke 3 dibuat juga melalui model yaitu UserRole
+// @relation(fields: [userId], references: [id]) relasi ke user (dengan kolom spesifik userId relasi dari User)
+// @relation(fields: [roleId], references: [id]) relasi ke role (dengan kolom spesifik rikeId relasi dari Role)
+model User {
+  id        String     @id @default(cuid())
+  username  String     @unique
+  password  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  status    Int
+  userRoles UserRole[] // Relasi ke UserRole
+}
+
+model Role {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  userRoles UserRole[] // Relasi ke UserRole
+}
+
+model UserRole {
+  id     String @id @default(cuid())
+  user   User   @relation(fields: [userId], references: [id]) // Relasi ke User
+  userId String
+  role   Role   @relation(fields: [roleId], references: [id]) // Relasi ke Role
+  roleId String
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, roleId]) // Mencegah duplikasi relasi
+}
+

@@ -38,6 +38,16 @@ export type Role = $Result.DefaultSelection<Prisma.$RolePayload>
  * 
  */
 export type UserRole = $Result.DefaultSelection<Prisma.$UserRolePayload>
+/**
+ * Model Tech
+ * 
+ */
+export type Tech = $Result.DefaultSelection<Prisma.$TechPayload>
+/**
+ * Model Skill
+ * 
+ */
+export type Skill = $Result.DefaultSelection<Prisma.$SkillPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -211,6 +221,26 @@ export class PrismaClient<
     * ```
     */
   get userRole(): Prisma.UserRoleDelegate<ExtArgs>;
+
+  /**
+   * `prisma.tech`: Exposes CRUD operations for the **Tech** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Teches
+    * const teches = await prisma.tech.findMany()
+    * ```
+    */
+  get tech(): Prisma.TechDelegate<ExtArgs>;
+
+  /**
+   * `prisma.skill`: Exposes CRUD operations for the **Skill** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Skills
+    * const skills = await prisma.skill.findMany()
+    * ```
+    */
+  get skill(): Prisma.SkillDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -656,7 +686,9 @@ export namespace Prisma {
     Tag: 'Tag',
     User: 'User',
     Role: 'Role',
-    UserRole: 'UserRole'
+    UserRole: 'UserRole',
+    Tech: 'Tech',
+    Skill: 'Skill'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -672,7 +704,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "article" | "tag" | "user" | "role" | "userRole"
+      modelProps: "article" | "tag" | "user" | "role" | "userRole" | "tech" | "skill"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1026,6 +1058,146 @@ export namespace Prisma {
           }
         }
       }
+      Tech: {
+        payload: Prisma.$TechPayload<ExtArgs>
+        fields: Prisma.TechFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TechFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TechFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>
+          }
+          findFirst: {
+            args: Prisma.TechFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TechFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>
+          }
+          findMany: {
+            args: Prisma.TechFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>[]
+          }
+          create: {
+            args: Prisma.TechCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>
+          }
+          createMany: {
+            args: Prisma.TechCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TechCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>[]
+          }
+          delete: {
+            args: Prisma.TechDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>
+          }
+          update: {
+            args: Prisma.TechUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>
+          }
+          deleteMany: {
+            args: Prisma.TechDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TechUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TechUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TechPayload>
+          }
+          aggregate: {
+            args: Prisma.TechAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTech>
+          }
+          groupBy: {
+            args: Prisma.TechGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TechGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TechCountArgs<ExtArgs>
+            result: $Utils.Optional<TechCountAggregateOutputType> | number
+          }
+        }
+      }
+      Skill: {
+        payload: Prisma.$SkillPayload<ExtArgs>
+        fields: Prisma.SkillFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SkillFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SkillFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>
+          }
+          findFirst: {
+            args: Prisma.SkillFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SkillFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>
+          }
+          findMany: {
+            args: Prisma.SkillFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>[]
+          }
+          create: {
+            args: Prisma.SkillCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>
+          }
+          createMany: {
+            args: Prisma.SkillCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SkillCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>[]
+          }
+          delete: {
+            args: Prisma.SkillDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>
+          }
+          update: {
+            args: Prisma.SkillUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>
+          }
+          deleteMany: {
+            args: Prisma.SkillDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SkillUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SkillUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SkillPayload>
+          }
+          aggregate: {
+            args: Prisma.SkillAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSkill>
+          }
+          groupBy: {
+            args: Prisma.SkillGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SkillGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SkillCountArgs<ExtArgs>
+            result: $Utils.Optional<SkillCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1303,6 +1475,68 @@ export namespace Prisma {
    */
   export type RoleCountOutputTypeCountUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserRoleWhereInput
+  }
+
+
+  /**
+   * Count Type TechCountOutputType
+   */
+
+  export type TechCountOutputType = {
+    skills: number
+  }
+
+  export type TechCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    skills?: boolean | TechCountOutputTypeCountSkillsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TechCountOutputType without action
+   */
+  export type TechCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TechCountOutputType
+     */
+    select?: TechCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TechCountOutputType without action
+   */
+  export type TechCountOutputTypeCountSkillsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SkillWhereInput
+  }
+
+
+  /**
+   * Count Type SkillCountOutputType
+   */
+
+  export type SkillCountOutputType = {
+    techs: number
+  }
+
+  export type SkillCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    techs?: boolean | SkillCountOutputTypeCountTechsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SkillCountOutputType without action
+   */
+  export type SkillCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SkillCountOutputType
+     */
+    select?: SkillCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SkillCountOutputType without action
+   */
+  export type SkillCountOutputTypeCountTechsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TechWhereInput
   }
 
 
@@ -6124,6 +6358,1898 @@ export namespace Prisma {
 
 
   /**
+   * Model Tech
+   */
+
+  export type AggregateTech = {
+    _count: TechCountAggregateOutputType | null
+    _avg: TechAvgAggregateOutputType | null
+    _sum: TechSumAggregateOutputType | null
+    _min: TechMinAggregateOutputType | null
+    _max: TechMaxAggregateOutputType | null
+  }
+
+  export type TechAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TechSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TechMinAggregateOutputType = {
+    id: number | null
+    techName: string | null
+  }
+
+  export type TechMaxAggregateOutputType = {
+    id: number | null
+    techName: string | null
+  }
+
+  export type TechCountAggregateOutputType = {
+    id: number
+    techName: number
+    _all: number
+  }
+
+
+  export type TechAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TechSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TechMinAggregateInputType = {
+    id?: true
+    techName?: true
+  }
+
+  export type TechMaxAggregateInputType = {
+    id?: true
+    techName?: true
+  }
+
+  export type TechCountAggregateInputType = {
+    id?: true
+    techName?: true
+    _all?: true
+  }
+
+  export type TechAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tech to aggregate.
+     */
+    where?: TechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Teches to fetch.
+     */
+    orderBy?: TechOrderByWithRelationInput | TechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Teches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Teches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Teches
+    **/
+    _count?: true | TechCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TechAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TechSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TechMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TechMaxAggregateInputType
+  }
+
+  export type GetTechAggregateType<T extends TechAggregateArgs> = {
+        [P in keyof T & keyof AggregateTech]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTech[P]>
+      : GetScalarType<T[P], AggregateTech[P]>
+  }
+
+
+
+
+  export type TechGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TechWhereInput
+    orderBy?: TechOrderByWithAggregationInput | TechOrderByWithAggregationInput[]
+    by: TechScalarFieldEnum[] | TechScalarFieldEnum
+    having?: TechScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TechCountAggregateInputType | true
+    _avg?: TechAvgAggregateInputType
+    _sum?: TechSumAggregateInputType
+    _min?: TechMinAggregateInputType
+    _max?: TechMaxAggregateInputType
+  }
+
+  export type TechGroupByOutputType = {
+    id: number
+    techName: string
+    _count: TechCountAggregateOutputType | null
+    _avg: TechAvgAggregateOutputType | null
+    _sum: TechSumAggregateOutputType | null
+    _min: TechMinAggregateOutputType | null
+    _max: TechMaxAggregateOutputType | null
+  }
+
+  type GetTechGroupByPayload<T extends TechGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TechGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TechGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TechGroupByOutputType[P]>
+            : GetScalarType<T[P], TechGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TechSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    techName?: boolean
+    skills?: boolean | Tech$skillsArgs<ExtArgs>
+    _count?: boolean | TechCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tech"]>
+
+  export type TechSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    techName?: boolean
+  }, ExtArgs["result"]["tech"]>
+
+  export type TechSelectScalar = {
+    id?: boolean
+    techName?: boolean
+  }
+
+  export type TechInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    skills?: boolean | Tech$skillsArgs<ExtArgs>
+    _count?: boolean | TechCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TechIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TechPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Tech"
+    objects: {
+      skills: Prisma.$SkillPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      techName: string
+    }, ExtArgs["result"]["tech"]>
+    composites: {}
+  }
+
+  type TechGetPayload<S extends boolean | null | undefined | TechDefaultArgs> = $Result.GetResult<Prisma.$TechPayload, S>
+
+  type TechCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TechFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TechCountAggregateInputType | true
+    }
+
+  export interface TechDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Tech'], meta: { name: 'Tech' } }
+    /**
+     * Find zero or one Tech that matches the filter.
+     * @param {TechFindUniqueArgs} args - Arguments to find a Tech
+     * @example
+     * // Get one Tech
+     * const tech = await prisma.tech.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TechFindUniqueArgs>(args: SelectSubset<T, TechFindUniqueArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Tech that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TechFindUniqueOrThrowArgs} args - Arguments to find a Tech
+     * @example
+     * // Get one Tech
+     * const tech = await prisma.tech.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TechFindUniqueOrThrowArgs>(args: SelectSubset<T, TechFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Tech that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechFindFirstArgs} args - Arguments to find a Tech
+     * @example
+     * // Get one Tech
+     * const tech = await prisma.tech.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TechFindFirstArgs>(args?: SelectSubset<T, TechFindFirstArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Tech that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechFindFirstOrThrowArgs} args - Arguments to find a Tech
+     * @example
+     * // Get one Tech
+     * const tech = await prisma.tech.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TechFindFirstOrThrowArgs>(args?: SelectSubset<T, TechFindFirstOrThrowArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Teches that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Teches
+     * const teches = await prisma.tech.findMany()
+     * 
+     * // Get first 10 Teches
+     * const teches = await prisma.tech.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const techWithIdOnly = await prisma.tech.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TechFindManyArgs>(args?: SelectSubset<T, TechFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Tech.
+     * @param {TechCreateArgs} args - Arguments to create a Tech.
+     * @example
+     * // Create one Tech
+     * const Tech = await prisma.tech.create({
+     *   data: {
+     *     // ... data to create a Tech
+     *   }
+     * })
+     * 
+     */
+    create<T extends TechCreateArgs>(args: SelectSubset<T, TechCreateArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Teches.
+     * @param {TechCreateManyArgs} args - Arguments to create many Teches.
+     * @example
+     * // Create many Teches
+     * const tech = await prisma.tech.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TechCreateManyArgs>(args?: SelectSubset<T, TechCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Teches and returns the data saved in the database.
+     * @param {TechCreateManyAndReturnArgs} args - Arguments to create many Teches.
+     * @example
+     * // Create many Teches
+     * const tech = await prisma.tech.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Teches and only return the `id`
+     * const techWithIdOnly = await prisma.tech.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TechCreateManyAndReturnArgs>(args?: SelectSubset<T, TechCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Tech.
+     * @param {TechDeleteArgs} args - Arguments to delete one Tech.
+     * @example
+     * // Delete one Tech
+     * const Tech = await prisma.tech.delete({
+     *   where: {
+     *     // ... filter to delete one Tech
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TechDeleteArgs>(args: SelectSubset<T, TechDeleteArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Tech.
+     * @param {TechUpdateArgs} args - Arguments to update one Tech.
+     * @example
+     * // Update one Tech
+     * const tech = await prisma.tech.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TechUpdateArgs>(args: SelectSubset<T, TechUpdateArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Teches.
+     * @param {TechDeleteManyArgs} args - Arguments to filter Teches to delete.
+     * @example
+     * // Delete a few Teches
+     * const { count } = await prisma.tech.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TechDeleteManyArgs>(args?: SelectSubset<T, TechDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Teches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Teches
+     * const tech = await prisma.tech.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TechUpdateManyArgs>(args: SelectSubset<T, TechUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tech.
+     * @param {TechUpsertArgs} args - Arguments to update or create a Tech.
+     * @example
+     * // Update or create a Tech
+     * const tech = await prisma.tech.upsert({
+     *   create: {
+     *     // ... data to create a Tech
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tech we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TechUpsertArgs>(args: SelectSubset<T, TechUpsertArgs<ExtArgs>>): Prisma__TechClient<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Teches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechCountArgs} args - Arguments to filter Teches to count.
+     * @example
+     * // Count the number of Teches
+     * const count = await prisma.tech.count({
+     *   where: {
+     *     // ... the filter for the Teches we want to count
+     *   }
+     * })
+    **/
+    count<T extends TechCountArgs>(
+      args?: Subset<T, TechCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TechCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tech.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TechAggregateArgs>(args: Subset<T, TechAggregateArgs>): Prisma.PrismaPromise<GetTechAggregateType<T>>
+
+    /**
+     * Group by Tech.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TechGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TechGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TechGroupByArgs['orderBy'] }
+        : { orderBy?: TechGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TechGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTechGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Tech model
+   */
+  readonly fields: TechFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Tech.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TechClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    skills<T extends Tech$skillsArgs<ExtArgs> = {}>(args?: Subset<T, Tech$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Tech model
+   */ 
+  interface TechFieldRefs {
+    readonly id: FieldRef<"Tech", 'Int'>
+    readonly techName: FieldRef<"Tech", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Tech findUnique
+   */
+  export type TechFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * Filter, which Tech to fetch.
+     */
+    where: TechWhereUniqueInput
+  }
+
+  /**
+   * Tech findUniqueOrThrow
+   */
+  export type TechFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * Filter, which Tech to fetch.
+     */
+    where: TechWhereUniqueInput
+  }
+
+  /**
+   * Tech findFirst
+   */
+  export type TechFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * Filter, which Tech to fetch.
+     */
+    where?: TechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Teches to fetch.
+     */
+    orderBy?: TechOrderByWithRelationInput | TechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Teches.
+     */
+    cursor?: TechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Teches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Teches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Teches.
+     */
+    distinct?: TechScalarFieldEnum | TechScalarFieldEnum[]
+  }
+
+  /**
+   * Tech findFirstOrThrow
+   */
+  export type TechFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * Filter, which Tech to fetch.
+     */
+    where?: TechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Teches to fetch.
+     */
+    orderBy?: TechOrderByWithRelationInput | TechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Teches.
+     */
+    cursor?: TechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Teches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Teches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Teches.
+     */
+    distinct?: TechScalarFieldEnum | TechScalarFieldEnum[]
+  }
+
+  /**
+   * Tech findMany
+   */
+  export type TechFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * Filter, which Teches to fetch.
+     */
+    where?: TechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Teches to fetch.
+     */
+    orderBy?: TechOrderByWithRelationInput | TechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Teches.
+     */
+    cursor?: TechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Teches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Teches.
+     */
+    skip?: number
+    distinct?: TechScalarFieldEnum | TechScalarFieldEnum[]
+  }
+
+  /**
+   * Tech create
+   */
+  export type TechCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Tech.
+     */
+    data: XOR<TechCreateInput, TechUncheckedCreateInput>
+  }
+
+  /**
+   * Tech createMany
+   */
+  export type TechCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Teches.
+     */
+    data: TechCreateManyInput | TechCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tech createManyAndReturn
+   */
+  export type TechCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Teches.
+     */
+    data: TechCreateManyInput | TechCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tech update
+   */
+  export type TechUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Tech.
+     */
+    data: XOR<TechUpdateInput, TechUncheckedUpdateInput>
+    /**
+     * Choose, which Tech to update.
+     */
+    where: TechWhereUniqueInput
+  }
+
+  /**
+   * Tech updateMany
+   */
+  export type TechUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Teches.
+     */
+    data: XOR<TechUpdateManyMutationInput, TechUncheckedUpdateManyInput>
+    /**
+     * Filter which Teches to update
+     */
+    where?: TechWhereInput
+  }
+
+  /**
+   * Tech upsert
+   */
+  export type TechUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Tech to update in case it exists.
+     */
+    where: TechWhereUniqueInput
+    /**
+     * In case the Tech found by the `where` argument doesn't exist, create a new Tech with this data.
+     */
+    create: XOR<TechCreateInput, TechUncheckedCreateInput>
+    /**
+     * In case the Tech was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TechUpdateInput, TechUncheckedUpdateInput>
+  }
+
+  /**
+   * Tech delete
+   */
+  export type TechDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    /**
+     * Filter which Tech to delete.
+     */
+    where: TechWhereUniqueInput
+  }
+
+  /**
+   * Tech deleteMany
+   */
+  export type TechDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Teches to delete
+     */
+    where?: TechWhereInput
+  }
+
+  /**
+   * Tech.skills
+   */
+  export type Tech$skillsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    where?: SkillWhereInput
+    orderBy?: SkillOrderByWithRelationInput | SkillOrderByWithRelationInput[]
+    cursor?: SkillWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SkillScalarFieldEnum | SkillScalarFieldEnum[]
+  }
+
+  /**
+   * Tech without action
+   */
+  export type TechDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Skill
+   */
+
+  export type AggregateSkill = {
+    _count: SkillCountAggregateOutputType | null
+    _avg: SkillAvgAggregateOutputType | null
+    _sum: SkillSumAggregateOutputType | null
+    _min: SkillMinAggregateOutputType | null
+    _max: SkillMaxAggregateOutputType | null
+  }
+
+  export type SkillAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SkillSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SkillMinAggregateOutputType = {
+    id: number | null
+    skillName: string | null
+  }
+
+  export type SkillMaxAggregateOutputType = {
+    id: number | null
+    skillName: string | null
+  }
+
+  export type SkillCountAggregateOutputType = {
+    id: number
+    skillName: number
+    _all: number
+  }
+
+
+  export type SkillAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type SkillSumAggregateInputType = {
+    id?: true
+  }
+
+  export type SkillMinAggregateInputType = {
+    id?: true
+    skillName?: true
+  }
+
+  export type SkillMaxAggregateInputType = {
+    id?: true
+    skillName?: true
+  }
+
+  export type SkillCountAggregateInputType = {
+    id?: true
+    skillName?: true
+    _all?: true
+  }
+
+  export type SkillAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Skill to aggregate.
+     */
+    where?: SkillWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Skills to fetch.
+     */
+    orderBy?: SkillOrderByWithRelationInput | SkillOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SkillWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Skills from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Skills.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Skills
+    **/
+    _count?: true | SkillCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SkillAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SkillSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SkillMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SkillMaxAggregateInputType
+  }
+
+  export type GetSkillAggregateType<T extends SkillAggregateArgs> = {
+        [P in keyof T & keyof AggregateSkill]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSkill[P]>
+      : GetScalarType<T[P], AggregateSkill[P]>
+  }
+
+
+
+
+  export type SkillGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SkillWhereInput
+    orderBy?: SkillOrderByWithAggregationInput | SkillOrderByWithAggregationInput[]
+    by: SkillScalarFieldEnum[] | SkillScalarFieldEnum
+    having?: SkillScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SkillCountAggregateInputType | true
+    _avg?: SkillAvgAggregateInputType
+    _sum?: SkillSumAggregateInputType
+    _min?: SkillMinAggregateInputType
+    _max?: SkillMaxAggregateInputType
+  }
+
+  export type SkillGroupByOutputType = {
+    id: number
+    skillName: string
+    _count: SkillCountAggregateOutputType | null
+    _avg: SkillAvgAggregateOutputType | null
+    _sum: SkillSumAggregateOutputType | null
+    _min: SkillMinAggregateOutputType | null
+    _max: SkillMaxAggregateOutputType | null
+  }
+
+  type GetSkillGroupByPayload<T extends SkillGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SkillGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SkillGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SkillGroupByOutputType[P]>
+            : GetScalarType<T[P], SkillGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SkillSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    skillName?: boolean
+    techs?: boolean | Skill$techsArgs<ExtArgs>
+    _count?: boolean | SkillCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["skill"]>
+
+  export type SkillSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    skillName?: boolean
+  }, ExtArgs["result"]["skill"]>
+
+  export type SkillSelectScalar = {
+    id?: boolean
+    skillName?: boolean
+  }
+
+  export type SkillInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    techs?: boolean | Skill$techsArgs<ExtArgs>
+    _count?: boolean | SkillCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SkillIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $SkillPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Skill"
+    objects: {
+      techs: Prisma.$TechPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      skillName: string
+    }, ExtArgs["result"]["skill"]>
+    composites: {}
+  }
+
+  type SkillGetPayload<S extends boolean | null | undefined | SkillDefaultArgs> = $Result.GetResult<Prisma.$SkillPayload, S>
+
+  type SkillCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SkillFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SkillCountAggregateInputType | true
+    }
+
+  export interface SkillDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Skill'], meta: { name: 'Skill' } }
+    /**
+     * Find zero or one Skill that matches the filter.
+     * @param {SkillFindUniqueArgs} args - Arguments to find a Skill
+     * @example
+     * // Get one Skill
+     * const skill = await prisma.skill.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SkillFindUniqueArgs>(args: SelectSubset<T, SkillFindUniqueArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Skill that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SkillFindUniqueOrThrowArgs} args - Arguments to find a Skill
+     * @example
+     * // Get one Skill
+     * const skill = await prisma.skill.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SkillFindUniqueOrThrowArgs>(args: SelectSubset<T, SkillFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Skill that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillFindFirstArgs} args - Arguments to find a Skill
+     * @example
+     * // Get one Skill
+     * const skill = await prisma.skill.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SkillFindFirstArgs>(args?: SelectSubset<T, SkillFindFirstArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Skill that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillFindFirstOrThrowArgs} args - Arguments to find a Skill
+     * @example
+     * // Get one Skill
+     * const skill = await prisma.skill.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SkillFindFirstOrThrowArgs>(args?: SelectSubset<T, SkillFindFirstOrThrowArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Skills that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Skills
+     * const skills = await prisma.skill.findMany()
+     * 
+     * // Get first 10 Skills
+     * const skills = await prisma.skill.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const skillWithIdOnly = await prisma.skill.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SkillFindManyArgs>(args?: SelectSubset<T, SkillFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Skill.
+     * @param {SkillCreateArgs} args - Arguments to create a Skill.
+     * @example
+     * // Create one Skill
+     * const Skill = await prisma.skill.create({
+     *   data: {
+     *     // ... data to create a Skill
+     *   }
+     * })
+     * 
+     */
+    create<T extends SkillCreateArgs>(args: SelectSubset<T, SkillCreateArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Skills.
+     * @param {SkillCreateManyArgs} args - Arguments to create many Skills.
+     * @example
+     * // Create many Skills
+     * const skill = await prisma.skill.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SkillCreateManyArgs>(args?: SelectSubset<T, SkillCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Skills and returns the data saved in the database.
+     * @param {SkillCreateManyAndReturnArgs} args - Arguments to create many Skills.
+     * @example
+     * // Create many Skills
+     * const skill = await prisma.skill.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Skills and only return the `id`
+     * const skillWithIdOnly = await prisma.skill.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SkillCreateManyAndReturnArgs>(args?: SelectSubset<T, SkillCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Skill.
+     * @param {SkillDeleteArgs} args - Arguments to delete one Skill.
+     * @example
+     * // Delete one Skill
+     * const Skill = await prisma.skill.delete({
+     *   where: {
+     *     // ... filter to delete one Skill
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SkillDeleteArgs>(args: SelectSubset<T, SkillDeleteArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Skill.
+     * @param {SkillUpdateArgs} args - Arguments to update one Skill.
+     * @example
+     * // Update one Skill
+     * const skill = await prisma.skill.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SkillUpdateArgs>(args: SelectSubset<T, SkillUpdateArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Skills.
+     * @param {SkillDeleteManyArgs} args - Arguments to filter Skills to delete.
+     * @example
+     * // Delete a few Skills
+     * const { count } = await prisma.skill.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SkillDeleteManyArgs>(args?: SelectSubset<T, SkillDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Skills.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Skills
+     * const skill = await prisma.skill.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SkillUpdateManyArgs>(args: SelectSubset<T, SkillUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Skill.
+     * @param {SkillUpsertArgs} args - Arguments to update or create a Skill.
+     * @example
+     * // Update or create a Skill
+     * const skill = await prisma.skill.upsert({
+     *   create: {
+     *     // ... data to create a Skill
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Skill we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SkillUpsertArgs>(args: SelectSubset<T, SkillUpsertArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Skills.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillCountArgs} args - Arguments to filter Skills to count.
+     * @example
+     * // Count the number of Skills
+     * const count = await prisma.skill.count({
+     *   where: {
+     *     // ... the filter for the Skills we want to count
+     *   }
+     * })
+    **/
+    count<T extends SkillCountArgs>(
+      args?: Subset<T, SkillCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SkillCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Skill.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SkillAggregateArgs>(args: Subset<T, SkillAggregateArgs>): Prisma.PrismaPromise<GetSkillAggregateType<T>>
+
+    /**
+     * Group by Skill.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SkillGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SkillGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SkillGroupByArgs['orderBy'] }
+        : { orderBy?: SkillGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SkillGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSkillGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Skill model
+   */
+  readonly fields: SkillFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Skill.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SkillClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    techs<T extends Skill$techsArgs<ExtArgs> = {}>(args?: Subset<T, Skill$techsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TechPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Skill model
+   */ 
+  interface SkillFieldRefs {
+    readonly id: FieldRef<"Skill", 'Int'>
+    readonly skillName: FieldRef<"Skill", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Skill findUnique
+   */
+  export type SkillFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * Filter, which Skill to fetch.
+     */
+    where: SkillWhereUniqueInput
+  }
+
+  /**
+   * Skill findUniqueOrThrow
+   */
+  export type SkillFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * Filter, which Skill to fetch.
+     */
+    where: SkillWhereUniqueInput
+  }
+
+  /**
+   * Skill findFirst
+   */
+  export type SkillFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * Filter, which Skill to fetch.
+     */
+    where?: SkillWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Skills to fetch.
+     */
+    orderBy?: SkillOrderByWithRelationInput | SkillOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Skills.
+     */
+    cursor?: SkillWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Skills from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Skills.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Skills.
+     */
+    distinct?: SkillScalarFieldEnum | SkillScalarFieldEnum[]
+  }
+
+  /**
+   * Skill findFirstOrThrow
+   */
+  export type SkillFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * Filter, which Skill to fetch.
+     */
+    where?: SkillWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Skills to fetch.
+     */
+    orderBy?: SkillOrderByWithRelationInput | SkillOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Skills.
+     */
+    cursor?: SkillWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Skills from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Skills.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Skills.
+     */
+    distinct?: SkillScalarFieldEnum | SkillScalarFieldEnum[]
+  }
+
+  /**
+   * Skill findMany
+   */
+  export type SkillFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * Filter, which Skills to fetch.
+     */
+    where?: SkillWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Skills to fetch.
+     */
+    orderBy?: SkillOrderByWithRelationInput | SkillOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Skills.
+     */
+    cursor?: SkillWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Skills from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Skills.
+     */
+    skip?: number
+    distinct?: SkillScalarFieldEnum | SkillScalarFieldEnum[]
+  }
+
+  /**
+   * Skill create
+   */
+  export type SkillCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Skill.
+     */
+    data: XOR<SkillCreateInput, SkillUncheckedCreateInput>
+  }
+
+  /**
+   * Skill createMany
+   */
+  export type SkillCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Skills.
+     */
+    data: SkillCreateManyInput | SkillCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Skill createManyAndReturn
+   */
+  export type SkillCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Skills.
+     */
+    data: SkillCreateManyInput | SkillCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Skill update
+   */
+  export type SkillUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Skill.
+     */
+    data: XOR<SkillUpdateInput, SkillUncheckedUpdateInput>
+    /**
+     * Choose, which Skill to update.
+     */
+    where: SkillWhereUniqueInput
+  }
+
+  /**
+   * Skill updateMany
+   */
+  export type SkillUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Skills.
+     */
+    data: XOR<SkillUpdateManyMutationInput, SkillUncheckedUpdateManyInput>
+    /**
+     * Filter which Skills to update
+     */
+    where?: SkillWhereInput
+  }
+
+  /**
+   * Skill upsert
+   */
+  export type SkillUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Skill to update in case it exists.
+     */
+    where: SkillWhereUniqueInput
+    /**
+     * In case the Skill found by the `where` argument doesn't exist, create a new Skill with this data.
+     */
+    create: XOR<SkillCreateInput, SkillUncheckedCreateInput>
+    /**
+     * In case the Skill was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SkillUpdateInput, SkillUncheckedUpdateInput>
+  }
+
+  /**
+   * Skill delete
+   */
+  export type SkillDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+    /**
+     * Filter which Skill to delete.
+     */
+    where: SkillWhereUniqueInput
+  }
+
+  /**
+   * Skill deleteMany
+   */
+  export type SkillDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Skills to delete
+     */
+    where?: SkillWhereInput
+  }
+
+  /**
+   * Skill.techs
+   */
+  export type Skill$techsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tech
+     */
+    select?: TechSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TechInclude<ExtArgs> | null
+    where?: TechWhereInput
+    orderBy?: TechOrderByWithRelationInput | TechOrderByWithRelationInput[]
+    cursor?: TechWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TechScalarFieldEnum | TechScalarFieldEnum[]
+  }
+
+  /**
+   * Skill without action
+   */
+  export type SkillDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Skill
+     */
+    select?: SkillSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6188,6 +8314,22 @@ export namespace Prisma {
   };
 
   export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
+
+
+  export const TechScalarFieldEnum: {
+    id: 'id',
+    techName: 'techName'
+  };
+
+  export type TechScalarFieldEnum = (typeof TechScalarFieldEnum)[keyof typeof TechScalarFieldEnum]
+
+
+  export const SkillScalarFieldEnum: {
+    id: 'id',
+    skillName: 'skillName'
+  };
+
+  export type SkillScalarFieldEnum = (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6545,6 +8687,90 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"UserRole"> | Date | string
   }
 
+  export type TechWhereInput = {
+    AND?: TechWhereInput | TechWhereInput[]
+    OR?: TechWhereInput[]
+    NOT?: TechWhereInput | TechWhereInput[]
+    id?: IntFilter<"Tech"> | number
+    techName?: StringFilter<"Tech"> | string
+    skills?: SkillListRelationFilter
+  }
+
+  export type TechOrderByWithRelationInput = {
+    id?: SortOrder
+    techName?: SortOrder
+    skills?: SkillOrderByRelationAggregateInput
+  }
+
+  export type TechWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TechWhereInput | TechWhereInput[]
+    OR?: TechWhereInput[]
+    NOT?: TechWhereInput | TechWhereInput[]
+    techName?: StringFilter<"Tech"> | string
+    skills?: SkillListRelationFilter
+  }, "id">
+
+  export type TechOrderByWithAggregationInput = {
+    id?: SortOrder
+    techName?: SortOrder
+    _count?: TechCountOrderByAggregateInput
+    _avg?: TechAvgOrderByAggregateInput
+    _max?: TechMaxOrderByAggregateInput
+    _min?: TechMinOrderByAggregateInput
+    _sum?: TechSumOrderByAggregateInput
+  }
+
+  export type TechScalarWhereWithAggregatesInput = {
+    AND?: TechScalarWhereWithAggregatesInput | TechScalarWhereWithAggregatesInput[]
+    OR?: TechScalarWhereWithAggregatesInput[]
+    NOT?: TechScalarWhereWithAggregatesInput | TechScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Tech"> | number
+    techName?: StringWithAggregatesFilter<"Tech"> | string
+  }
+
+  export type SkillWhereInput = {
+    AND?: SkillWhereInput | SkillWhereInput[]
+    OR?: SkillWhereInput[]
+    NOT?: SkillWhereInput | SkillWhereInput[]
+    id?: IntFilter<"Skill"> | number
+    skillName?: StringFilter<"Skill"> | string
+    techs?: TechListRelationFilter
+  }
+
+  export type SkillOrderByWithRelationInput = {
+    id?: SortOrder
+    skillName?: SortOrder
+    techs?: TechOrderByRelationAggregateInput
+  }
+
+  export type SkillWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    skillName?: string
+    AND?: SkillWhereInput | SkillWhereInput[]
+    OR?: SkillWhereInput[]
+    NOT?: SkillWhereInput | SkillWhereInput[]
+    techs?: TechListRelationFilter
+  }, "id" | "skillName">
+
+  export type SkillOrderByWithAggregationInput = {
+    id?: SortOrder
+    skillName?: SortOrder
+    _count?: SkillCountOrderByAggregateInput
+    _avg?: SkillAvgOrderByAggregateInput
+    _max?: SkillMaxOrderByAggregateInput
+    _min?: SkillMinOrderByAggregateInput
+    _sum?: SkillSumOrderByAggregateInput
+  }
+
+  export type SkillScalarWhereWithAggregatesInput = {
+    AND?: SkillScalarWhereWithAggregatesInput | SkillScalarWhereWithAggregatesInput[]
+    OR?: SkillScalarWhereWithAggregatesInput[]
+    NOT?: SkillScalarWhereWithAggregatesInput | SkillScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Skill"> | number
+    skillName?: StringWithAggregatesFilter<"Skill"> | string
+  }
+
   export type ArticleCreateInput = {
     title: string
     body: string
@@ -6819,6 +9045,78 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TechCreateInput = {
+    techName: string
+    skills?: SkillCreateNestedManyWithoutTechsInput
+  }
+
+  export type TechUncheckedCreateInput = {
+    id?: number
+    techName: string
+    skills?: SkillUncheckedCreateNestedManyWithoutTechsInput
+  }
+
+  export type TechUpdateInput = {
+    techName?: StringFieldUpdateOperationsInput | string
+    skills?: SkillUpdateManyWithoutTechsNestedInput
+  }
+
+  export type TechUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    techName?: StringFieldUpdateOperationsInput | string
+    skills?: SkillUncheckedUpdateManyWithoutTechsNestedInput
+  }
+
+  export type TechCreateManyInput = {
+    id?: number
+    techName: string
+  }
+
+  export type TechUpdateManyMutationInput = {
+    techName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TechUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    techName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SkillCreateInput = {
+    skillName: string
+    techs?: TechCreateNestedManyWithoutSkillsInput
+  }
+
+  export type SkillUncheckedCreateInput = {
+    id?: number
+    skillName: string
+    techs?: TechUncheckedCreateNestedManyWithoutSkillsInput
+  }
+
+  export type SkillUpdateInput = {
+    skillName?: StringFieldUpdateOperationsInput | string
+    techs?: TechUpdateManyWithoutSkillsNestedInput
+  }
+
+  export type SkillUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    skillName?: StringFieldUpdateOperationsInput | string
+    techs?: TechUncheckedUpdateManyWithoutSkillsNestedInput
+  }
+
+  export type SkillCreateManyInput = {
+    id?: number
+    skillName: string
+  }
+
+  export type SkillUpdateManyMutationInput = {
+    skillName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SkillUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    skillName?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7089,6 +9387,72 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type SkillListRelationFilter = {
+    every?: SkillWhereInput
+    some?: SkillWhereInput
+    none?: SkillWhereInput
+  }
+
+  export type SkillOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TechCountOrderByAggregateInput = {
+    id?: SortOrder
+    techName?: SortOrder
+  }
+
+  export type TechAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TechMaxOrderByAggregateInput = {
+    id?: SortOrder
+    techName?: SortOrder
+  }
+
+  export type TechMinOrderByAggregateInput = {
+    id?: SortOrder
+    techName?: SortOrder
+  }
+
+  export type TechSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TechListRelationFilter = {
+    every?: TechWhereInput
+    some?: TechWhereInput
+    none?: TechWhereInput
+  }
+
+  export type TechOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SkillCountOrderByAggregateInput = {
+    id?: SortOrder
+    skillName?: SortOrder
+  }
+
+  export type SkillAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type SkillMaxOrderByAggregateInput = {
+    id?: SortOrder
+    skillName?: SortOrder
+  }
+
+  export type SkillMinOrderByAggregateInput = {
+    id?: SortOrder
+    skillName?: SortOrder
+  }
+
+  export type SkillSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type TagCreateNestedManyWithoutArticlesInput = {
     create?: XOR<TagCreateWithoutArticlesInput, TagUncheckedCreateWithoutArticlesInput> | TagCreateWithoutArticlesInput[] | TagUncheckedCreateWithoutArticlesInput[]
     connectOrCreate?: TagCreateOrConnectWithoutArticlesInput | TagCreateOrConnectWithoutArticlesInput[]
@@ -7291,6 +9655,82 @@ export namespace Prisma {
     upsert?: RoleUpsertWithoutUserRolesInput
     connect?: RoleWhereUniqueInput
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUserRolesInput, RoleUpdateWithoutUserRolesInput>, RoleUncheckedUpdateWithoutUserRolesInput>
+  }
+
+  export type SkillCreateNestedManyWithoutTechsInput = {
+    create?: XOR<SkillCreateWithoutTechsInput, SkillUncheckedCreateWithoutTechsInput> | SkillCreateWithoutTechsInput[] | SkillUncheckedCreateWithoutTechsInput[]
+    connectOrCreate?: SkillCreateOrConnectWithoutTechsInput | SkillCreateOrConnectWithoutTechsInput[]
+    connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+  }
+
+  export type SkillUncheckedCreateNestedManyWithoutTechsInput = {
+    create?: XOR<SkillCreateWithoutTechsInput, SkillUncheckedCreateWithoutTechsInput> | SkillCreateWithoutTechsInput[] | SkillUncheckedCreateWithoutTechsInput[]
+    connectOrCreate?: SkillCreateOrConnectWithoutTechsInput | SkillCreateOrConnectWithoutTechsInput[]
+    connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+  }
+
+  export type SkillUpdateManyWithoutTechsNestedInput = {
+    create?: XOR<SkillCreateWithoutTechsInput, SkillUncheckedCreateWithoutTechsInput> | SkillCreateWithoutTechsInput[] | SkillUncheckedCreateWithoutTechsInput[]
+    connectOrCreate?: SkillCreateOrConnectWithoutTechsInput | SkillCreateOrConnectWithoutTechsInput[]
+    upsert?: SkillUpsertWithWhereUniqueWithoutTechsInput | SkillUpsertWithWhereUniqueWithoutTechsInput[]
+    set?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    disconnect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    delete?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    update?: SkillUpdateWithWhereUniqueWithoutTechsInput | SkillUpdateWithWhereUniqueWithoutTechsInput[]
+    updateMany?: SkillUpdateManyWithWhereWithoutTechsInput | SkillUpdateManyWithWhereWithoutTechsInput[]
+    deleteMany?: SkillScalarWhereInput | SkillScalarWhereInput[]
+  }
+
+  export type SkillUncheckedUpdateManyWithoutTechsNestedInput = {
+    create?: XOR<SkillCreateWithoutTechsInput, SkillUncheckedCreateWithoutTechsInput> | SkillCreateWithoutTechsInput[] | SkillUncheckedCreateWithoutTechsInput[]
+    connectOrCreate?: SkillCreateOrConnectWithoutTechsInput | SkillCreateOrConnectWithoutTechsInput[]
+    upsert?: SkillUpsertWithWhereUniqueWithoutTechsInput | SkillUpsertWithWhereUniqueWithoutTechsInput[]
+    set?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    disconnect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    delete?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+    update?: SkillUpdateWithWhereUniqueWithoutTechsInput | SkillUpdateWithWhereUniqueWithoutTechsInput[]
+    updateMany?: SkillUpdateManyWithWhereWithoutTechsInput | SkillUpdateManyWithWhereWithoutTechsInput[]
+    deleteMany?: SkillScalarWhereInput | SkillScalarWhereInput[]
+  }
+
+  export type TechCreateNestedManyWithoutSkillsInput = {
+    create?: XOR<TechCreateWithoutSkillsInput, TechUncheckedCreateWithoutSkillsInput> | TechCreateWithoutSkillsInput[] | TechUncheckedCreateWithoutSkillsInput[]
+    connectOrCreate?: TechCreateOrConnectWithoutSkillsInput | TechCreateOrConnectWithoutSkillsInput[]
+    connect?: TechWhereUniqueInput | TechWhereUniqueInput[]
+  }
+
+  export type TechUncheckedCreateNestedManyWithoutSkillsInput = {
+    create?: XOR<TechCreateWithoutSkillsInput, TechUncheckedCreateWithoutSkillsInput> | TechCreateWithoutSkillsInput[] | TechUncheckedCreateWithoutSkillsInput[]
+    connectOrCreate?: TechCreateOrConnectWithoutSkillsInput | TechCreateOrConnectWithoutSkillsInput[]
+    connect?: TechWhereUniqueInput | TechWhereUniqueInput[]
+  }
+
+  export type TechUpdateManyWithoutSkillsNestedInput = {
+    create?: XOR<TechCreateWithoutSkillsInput, TechUncheckedCreateWithoutSkillsInput> | TechCreateWithoutSkillsInput[] | TechUncheckedCreateWithoutSkillsInput[]
+    connectOrCreate?: TechCreateOrConnectWithoutSkillsInput | TechCreateOrConnectWithoutSkillsInput[]
+    upsert?: TechUpsertWithWhereUniqueWithoutSkillsInput | TechUpsertWithWhereUniqueWithoutSkillsInput[]
+    set?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    disconnect?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    delete?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    connect?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    update?: TechUpdateWithWhereUniqueWithoutSkillsInput | TechUpdateWithWhereUniqueWithoutSkillsInput[]
+    updateMany?: TechUpdateManyWithWhereWithoutSkillsInput | TechUpdateManyWithWhereWithoutSkillsInput[]
+    deleteMany?: TechScalarWhereInput | TechScalarWhereInput[]
+  }
+
+  export type TechUncheckedUpdateManyWithoutSkillsNestedInput = {
+    create?: XOR<TechCreateWithoutSkillsInput, TechUncheckedCreateWithoutSkillsInput> | TechCreateWithoutSkillsInput[] | TechUncheckedCreateWithoutSkillsInput[]
+    connectOrCreate?: TechCreateOrConnectWithoutSkillsInput | TechCreateOrConnectWithoutSkillsInput[]
+    upsert?: TechUpsertWithWhereUniqueWithoutSkillsInput | TechUpsertWithWhereUniqueWithoutSkillsInput[]
+    set?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    disconnect?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    delete?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    connect?: TechWhereUniqueInput | TechWhereUniqueInput[]
+    update?: TechUpdateWithWhereUniqueWithoutSkillsInput | TechUpdateWithWhereUniqueWithoutSkillsInput[]
+    updateMany?: TechUpdateManyWithWhereWithoutSkillsInput | TechUpdateManyWithWhereWithoutSkillsInput[]
+    deleteMany?: TechScalarWhereInput | TechScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7660,6 +10100,82 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SkillCreateWithoutTechsInput = {
+    skillName: string
+  }
+
+  export type SkillUncheckedCreateWithoutTechsInput = {
+    id?: number
+    skillName: string
+  }
+
+  export type SkillCreateOrConnectWithoutTechsInput = {
+    where: SkillWhereUniqueInput
+    create: XOR<SkillCreateWithoutTechsInput, SkillUncheckedCreateWithoutTechsInput>
+  }
+
+  export type SkillUpsertWithWhereUniqueWithoutTechsInput = {
+    where: SkillWhereUniqueInput
+    update: XOR<SkillUpdateWithoutTechsInput, SkillUncheckedUpdateWithoutTechsInput>
+    create: XOR<SkillCreateWithoutTechsInput, SkillUncheckedCreateWithoutTechsInput>
+  }
+
+  export type SkillUpdateWithWhereUniqueWithoutTechsInput = {
+    where: SkillWhereUniqueInput
+    data: XOR<SkillUpdateWithoutTechsInput, SkillUncheckedUpdateWithoutTechsInput>
+  }
+
+  export type SkillUpdateManyWithWhereWithoutTechsInput = {
+    where: SkillScalarWhereInput
+    data: XOR<SkillUpdateManyMutationInput, SkillUncheckedUpdateManyWithoutTechsInput>
+  }
+
+  export type SkillScalarWhereInput = {
+    AND?: SkillScalarWhereInput | SkillScalarWhereInput[]
+    OR?: SkillScalarWhereInput[]
+    NOT?: SkillScalarWhereInput | SkillScalarWhereInput[]
+    id?: IntFilter<"Skill"> | number
+    skillName?: StringFilter<"Skill"> | string
+  }
+
+  export type TechCreateWithoutSkillsInput = {
+    techName: string
+  }
+
+  export type TechUncheckedCreateWithoutSkillsInput = {
+    id?: number
+    techName: string
+  }
+
+  export type TechCreateOrConnectWithoutSkillsInput = {
+    where: TechWhereUniqueInput
+    create: XOR<TechCreateWithoutSkillsInput, TechUncheckedCreateWithoutSkillsInput>
+  }
+
+  export type TechUpsertWithWhereUniqueWithoutSkillsInput = {
+    where: TechWhereUniqueInput
+    update: XOR<TechUpdateWithoutSkillsInput, TechUncheckedUpdateWithoutSkillsInput>
+    create: XOR<TechCreateWithoutSkillsInput, TechUncheckedCreateWithoutSkillsInput>
+  }
+
+  export type TechUpdateWithWhereUniqueWithoutSkillsInput = {
+    where: TechWhereUniqueInput
+    data: XOR<TechUpdateWithoutSkillsInput, TechUncheckedUpdateWithoutSkillsInput>
+  }
+
+  export type TechUpdateManyWithWhereWithoutSkillsInput = {
+    where: TechScalarWhereInput
+    data: XOR<TechUpdateManyMutationInput, TechUncheckedUpdateManyWithoutSkillsInput>
+  }
+
+  export type TechScalarWhereInput = {
+    AND?: TechScalarWhereInput | TechScalarWhereInput[]
+    OR?: TechScalarWhereInput[]
+    NOT?: TechScalarWhereInput | TechScalarWhereInput[]
+    id?: IntFilter<"Tech"> | number
+    techName?: StringFilter<"Tech"> | string
+  }
+
   export type TagUpdateWithoutArticlesInput = {
     name?: StringFieldUpdateOperationsInput | string
   }
@@ -7751,6 +10267,34 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SkillUpdateWithoutTechsInput = {
+    skillName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SkillUncheckedUpdateWithoutTechsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    skillName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SkillUncheckedUpdateManyWithoutTechsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    skillName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TechUpdateWithoutSkillsInput = {
+    techName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TechUncheckedUpdateWithoutSkillsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    techName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TechUncheckedUpdateManyWithoutSkillsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    techName?: StringFieldUpdateOperationsInput | string
+  }
+
 
 
   /**
@@ -7773,6 +10317,14 @@ export namespace Prisma {
      */
     export type RoleCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RoleCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use TechCountOutputTypeDefaultArgs instead
+     */
+    export type TechCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TechCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SkillCountOutputTypeDefaultArgs instead
+     */
+    export type SkillCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SkillCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use ArticleDefaultArgs instead
      */
     export type ArticleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ArticleDefaultArgs<ExtArgs>
@@ -7792,6 +10344,14 @@ export namespace Prisma {
      * @deprecated Use UserRoleDefaultArgs instead
      */
     export type UserRoleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserRoleDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TechDefaultArgs instead
+     */
+    export type TechArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TechDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SkillDefaultArgs instead
+     */
+    export type SkillArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SkillDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

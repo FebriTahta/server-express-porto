@@ -1,8 +1,8 @@
 // khusus untuk handle request & response
 
 const express = require("express");
-const {serviceArticleList, serviceCreateArticle, serviceFindArticle, serviceArticleCount} = require('./article.service');
-const { createSlug, readableSlug, errorDataFormatter } = require("../utils");
+const {serviceArticleList, serviceCreateArticle, serviceFindArticle} = require('./article.service');
+const { createSlug, errorDataFormatter } = require("../utils");
 
 // router
 const router = express.Router();

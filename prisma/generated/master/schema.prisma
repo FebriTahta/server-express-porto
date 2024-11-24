@@ -14,6 +14,10 @@ datasource db {
   url      = env("DATABASE_URL_MASTER")
 }
 
+// contoh relasi many to many tanpa reference / relasi yang jelas
+// hanya menggunakan array []
+// yang menghasilkan tabel ke 3 _ArticleToTag secara otomatis dan bersifat tersembunyi apabila dibuka melalui prisma studio
+// kolom relasi yang diefinisikan adalah kolom A merepresentasikan Articles dan kolom B merepresentasikan Tag
 model Article {
   id        Int      @id @default(autoincrement())
   title     String
@@ -22,11 +26,59 @@ model Article {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   tags      Tag[] // Relasi ke Tag (many-to-many)
-  status    Int
+  status    Int      @default(1)
 }
 
 model Tag {
   id       Int       @id @default(autoincrement())
   name     String    @unique
   articles Article[] // Relasi ke Article (many-to-many)
+}
+
+// contoh relasi many to many antara user dan role dengan tabel referensi relasi yang jelas
+// tabel ke 3 dibuat juga melalui model yaitu UserRole
+// @relation(fields: [userId], references: [id]) relasi ke user (dengan kolom spesifik userId relasi dari User)
+// @relation(fields: [roleId], references: [id]) relasi ke role (dengan kolom spesifik rikeId relasi dari Role)
+model User {
+  id        String     @id @default(cuid())
+  username  String     @unique
+  password  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  status    Int
+  userRoles UserRole[] // Relasi ke UserRole
+}
+
+model Role {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  userRoles UserRole[] // Relasi ke UserRole
+}
+
+model UserRole {
+  id     String @id @default(cuid())
+  user   User   @relation(fields: [userId], references: [id]) // Relasi ke User
+  userId String
+  role   Role   @relation(fields: [roleId], references: [id]) // Relasi ke Role
+  roleId String
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, roleId]) // Mencegah duplikasi relasi
+}
+
+//
+//
+model Tech {
+  id       Int     @id @default(autoincrement())
+  techName String
+  skills   Skill[] // relasi many to many ke skill karena 1 tech punya banyak skill dan 1 skill bisa dimiliki oleh banyak tech
+}
+
+model Skill {
+  id        Int    @id @default(autoincrement())
+  skillName String @unique
+  techs     Tech[] // relasi many to many ke tech karena 1 skill punya banyak tech dan 1 tech bisa dimiliki oleh banyak skill
 }

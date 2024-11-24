@@ -22,4 +22,6 @@ app.listen(PORT, () => { // console starting project
 
 // middleware untuk menggunakan route controller (layered architechture)
 const articleController = require('./article/article.controller');
+const techSkillController = require('./tech/tech.controller');
 app.use('/articles', articleController);
+app.use('/techs', techSkillController);

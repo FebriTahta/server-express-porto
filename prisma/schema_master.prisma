@@ -68,4 +68,16 @@ model UserRole {
 
   @@unique([userId, roleId]) // Mencegah duplikasi relasi
 }
+//
+//
+model Tech {
+  id         Int  @id @default(autoincrement())
+  techName   String  
+  skills     Skill[]  // relasi many to many ke skill karena 1 tech punya banyak skill dan 1 skill bisa dimiliki oleh banyak tech
+}
 
+model Skill {
+  id         Int  @id @default(autoincrement())
+  skillName  String  @unique
+  techs      Tech[]  // relasi many to many ke tech karena 1 skill punya banyak tech dan 1 tech bisa dimiliki oleh banyak skill
+}

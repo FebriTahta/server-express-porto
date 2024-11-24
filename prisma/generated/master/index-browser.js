@@ -160,6 +160,16 @@ exports.Prisma.UserRoleScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TechScalarFieldEnum = {
+  id: 'id',
+  techName: 'techName'
+};
+
+exports.Prisma.SkillScalarFieldEnum = {
+  id: 'id',
+  skillName: 'skillName'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -176,7 +186,9 @@ exports.Prisma.ModelName = {
   Tag: 'Tag',
   User: 'User',
   Role: 'Role',
-  UserRole: 'UserRole'
+  UserRole: 'UserRole',
+  Tech: 'Tech',
+  Skill: 'Skill'
 };
 
 /**

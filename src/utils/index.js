@@ -2,7 +2,7 @@
 
 const pagination = (page, totalCount) => {
 
-    const limit  = 3;
+    const limit  = 10;
     const totalPages = Math.ceil(totalCount / limit);
     const offset = (page - 1) * limit;
 

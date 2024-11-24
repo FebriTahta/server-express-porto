@@ -61,6 +61,6 @@ npx prisma db push
 npx prisma studio
 
 #layered architecture (service respository)
-- controller : handle request & response
-- service : logic bisnis tambahan
-- repository : data access yang berkaitan dengan database
+- controller : handle request & response // 3 req berupa input dan res berupa output
+- service : logic bisnis tambahan isinya if else dan lain lain // 2 
+- repository : data access yang berkaitan dengan database // 1 query, koneksi, tabel dll

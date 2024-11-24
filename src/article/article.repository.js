@@ -12,6 +12,7 @@ const articleList = (offset, limit) => {
         include: {tags: true},
         skip: offset,
         take: limit,
+        orderBy: {id: 'desc'}
     })
 
     return data;
@@ -29,9 +30,9 @@ const findArticle = (slug) => {
 const createArticle = (requestBody) => {
     const data = masterPrisma.Article.create({
         data: {
-        title: requestBody.title,
-        body: requestBody.body,
-        slug: requestBody.slug,
+            title: requestBody.title,
+            body: requestBody.body,
+            slug: requestBody.slug,
         tags: {
             connectOrCreate: requestBody.tags.map((tag) => ({
                 where: { name: tag },

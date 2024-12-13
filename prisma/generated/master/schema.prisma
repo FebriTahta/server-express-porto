@@ -45,7 +45,7 @@ model User {
   password  String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  status    Int
+  status    Int        @default(1)
   userRoles UserRole[] // Relasi ke UserRole
 }
 
@@ -73,12 +73,21 @@ model UserRole {
 //
 model Tech {
   id       Int     @id @default(autoincrement())
-  techName String
+  techName String  @unique
   skills   Skill[] // relasi many to many ke skill karena 1 tech punya banyak skill dan 1 skill bisa dimiliki oleh banyak tech
 }
 
 model Skill {
+  // nama kolom           // property
   id        Int    @id @default(autoincrement())
   skillName String @unique
   techs     Tech[] // relasi many to many ke tech karena 1 skill punya banyak tech dan 1 tech bisa dimiliki oleh banyak skill
+}
+
+model Profile {
+  id       String  @id @default(cuid())
+  name     String  @unique
+  nickName String  @unique
+  photo    String?
+  desc     String
 }

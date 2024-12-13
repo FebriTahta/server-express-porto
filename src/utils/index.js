@@ -1,8 +1,9 @@
 // helpers yang bisa dipakai dimana saja
+const multer = require('multer');
 
 const pagination = (page, totalCount) => {
-
-    const limit  = 10;
+    // pagination standar
+    const limit  = 3;
     const totalPages = Math.ceil(totalCount / limit);
     const offset = (page - 1) * limit;
 
@@ -24,14 +25,17 @@ const pagination = (page, totalCount) => {
 };
 
 const createSlug = (slug) => {
+    // for creating slug ex: some-title
     return slug.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
 };
 
 const readableSlug = (slug) => {
+    // translate slug ex: some-title to some title
     return slug.replace(/-/g, ' ');
-}
+};
 
 const errorDataFormatter = (errorMessage) => {
+    // error catch handling
     const lines = errorMessage.split('\n').filter(line => line.trim() !== '');
     const result = {
         message: '',
@@ -53,6 +57,36 @@ const errorDataFormatter = (errorMessage) => {
     }
 
     return result;
-}
+};
 
-module.exports = { pagination, createSlug, readableSlug, errorDataFormatter};
+// Middleware upload image
+const uploadImage = () => {
+    const storage = multer.diskStorage({
+      destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Direktori tempat menyimpan file
+      },
+      filename: (req, file, cb) => {
+        const uniqueName = `${Date.now()}-${file.originalname}`;
+        cb(null, uniqueName); // Buat nama file unik
+      },
+    });
+  
+    // Filter file berdasarkan tipe
+    const fileFilter = (req, file, cb) => {
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+      if (allowedTypes.includes(file.mimetype)) {
+        cb(null, true);
+      } else {
+        cb(new Error('Invalid file type. Only JPEG, PNG, and JPG are allowed.'));
+      }
+    };
+  
+    // Middleware multer
+    return multer({
+      storage,
+      limits: { fileSize: 2 * 1024 * 1024 }, // Batas ukuran file 2MB
+      fileFilter,
+    });
+};
+
+module.exports = { pagination, createSlug, readableSlug, errorDataFormatter, uploadImage};

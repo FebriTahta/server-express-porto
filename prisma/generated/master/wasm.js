@@ -170,6 +170,14 @@ exports.Prisma.SkillScalarFieldEnum = {
   skillName: 'skillName'
 };
 
+exports.Prisma.ProfileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  nickName: 'nickName',
+  photo: 'photo',
+  desc: 'desc'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -180,6 +188,11 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Article: 'Article',
@@ -188,7 +201,8 @@ exports.Prisma.ModelName = {
   Role: 'Role',
   UserRole: 'UserRole',
   Tech: 'Tech',
-  Skill: 'Skill'
+  Skill: 'Skill',
+  Profile: 'Profile'
 };
 
 /**

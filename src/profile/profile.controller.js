@@ -16,8 +16,11 @@ class ProfileController {
 
     async createOrUpdateById (req, res) {
         try {
-          const response = await profileServices.createOrUpdateById(req.body, req.file);
-          res.status(response.code).json(response);
+            // Jika file ada, buat path-nya
+            const baseUrl = req.protocol + '://' + req.get('host');
+            const photoPath = req.file ? `${baseUrl}/uploads/${req.file.filename}` : null;
+            const response = await profileServices.createOrUpdateById(req.body, photoPath);
+            res.status(response.code).json(response);
         } catch (error) {
             res.status(500).json({
                 message: 'something error when fetching data',

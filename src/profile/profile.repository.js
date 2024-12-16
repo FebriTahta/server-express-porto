@@ -50,8 +50,8 @@ class ProfileRepositories {
         const updatedData = await masterPrisma.profile.update({
             where: { nickName: requestBody.nickname }, // Cari berdasarkan nickName
             data: {
-                name: requestBody.fullName,
-                desc: requestBody.description,
+                name: requestBody.name,
+                desc: requestBody.desc,
                 ...(photoPath && { photo: photoPath }), // Hanya perbarui foto jika ada
             },
         });
@@ -64,9 +64,9 @@ class ProfileRepositories {
         const updatedData = await masterPrisma.profile.update({
             where: { id: requestBody.id }, // Cari berdasarkan nickName
             data: {
-                name: requestBody.fullName,
-                nickName: requestBody.nickname,
-                desc: requestBody.description,
+                name: requestBody.name,
+                nickName: requestBody.nickName,
+                desc: requestBody.desc,
                 ...(photoPath && { photo: photoPath }), // Hanya perbarui foto jika ada
             },
         });

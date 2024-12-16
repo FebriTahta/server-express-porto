@@ -1,4 +1,5 @@
 const profileRepositories = require("./profile.repository");
+const {deleteOldImage} = require('../utils')
 
 class ProfileServices {
 
@@ -63,12 +64,9 @@ class ProfileServices {
         }
     }
 
-    async createOrUpdateByNick(requestBody, requestFile) {
+    async createOrUpdateByNick(requestBody, photoPath) {
         const nickName = requestBody.nickname;
         const exist = await this.findProfileByNickname(nickName);
-        
-        // Jika file ada, buat path-nya
-        const photoPath = requestFile ? `/uploads/${requestFile.filename}` : null;
         // nick not found
         if (exist.res == false) {
             // create new data while profile not found
@@ -93,12 +91,10 @@ class ProfileServices {
         };
     }
 
-    async createOrUpdateById(requestBody, requestFile) {
+    async createOrUpdateById(requestBody, photoPath) {
         const id = requestBody.id;
         const exist = await this.findProfileById(id);
         
-        // Jika file ada, buat path-nya
-        const photoPath = requestFile ? `/uploads/${requestFile.filename}` : null;
         // nick not found
         if (exist.res == false) {
             // create new data while profile not found
@@ -111,7 +107,13 @@ class ProfileServices {
                 code: 201,
             };
         }
-      
+
+        // delete old image jika ada gambar baru.
+        // gambar lama akan dihapus jika ada
+        if (photoPath) {
+            deleteOldImage(exist.data.photo);
+        }
+        
         // update data when nick found
         const updateData = await profileRepositories.updateProfileById(requestBody, photoPath);
         return {

@@ -1,5 +1,8 @@
 // helpers yang bisa dipakai dimana saja
 const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
+const url = require('url')
 
 const pagination = (page, totalCount) => {
     // pagination standar
@@ -89,4 +92,20 @@ const uploadImage = () => {
     });
 };
 
-module.exports = { pagination, createSlug, readableSlug, errorDataFormatter, uploadImage};
+const deleteOldImage = (fileUrl) => {
+  try {
+    const parsedUrl = new URL(fileUrl);
+    const localPath = path.join(__dirname, "../../", parsedUrl.pathname);
+    console.log("Local path resolved:", localPath);
+    fs.unlinkSync(localPath);
+    console.log('Gambar lama berhasil dihapus');
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      console.log('Gambar lama tidak ditemukan');
+    } else {
+      console.error(err);
+    }
+  }
+};
+
+module.exports = { pagination, createSlug, readableSlug, errorDataFormatter, uploadImage, deleteOldImage};

@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const { dbConnect } = require("./db");
 const router = require('./routes');
+const path = require('path');
 
 dotenv.config(); // config agar bisa memanggil value pada .env
 const PORT = process.env.PORT || 2020; // memanggil value port pada .env
@@ -23,6 +24,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+
 // router
 app.use('/', router); // router
 
@@ -30,3 +32,6 @@ app.use('/', router); // router
 app.listen(PORT, () => { // console starting project
     console.log('Express API running on PORT : ' + PORT);
 });
+
+// Middleware untuk menyajikan folder uploads sebagai folder publik
+app.use('/uploads', express.static('uploads'));

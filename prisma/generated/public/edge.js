@@ -132,7 +132,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
@@ -141,18 +141,17 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "postgresql",
-  "postinstall": false,
+  "activeProvider": "mysql",
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL_PUBLIC",
+        "fromEnvVar": "DATABASE_URL_PUBLIC_MYSQL",
         "value": null
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/public\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL_PUBLIC\")\n}\n\nmodel test {\n  id Int @id @default(autoincrement()) // id String @id @default(cuid())\n}\n",
-  "inlineSchemaHash": "acf63b4cda3dc6c8c10d968561f9249aee5df49ebe40575614284cf613d05463",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/public\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL_PUBLIC_MYSQL\")\n}\n\nmodel test {\n  id Int @id @default(autoincrement()) // id String @id @default(cuid())\n}\n",
+  "inlineSchemaHash": "0ecb131e1bc02711409df0c8d5eebc10fba4c6208ae773b23293bb8fd3ed532b",
   "copyEngine": true
 }
 config.dirname = '/'
@@ -163,7 +162,7 @@ config.engineWasm = undefined
 
 config.injectableEdgeEnv = () => ({
   parsed: {
-    DATABASE_URL_PUBLIC: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL_PUBLIC'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL_PUBLIC || undefined
+    DATABASE_URL_PUBLIC_MYSQL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL_PUBLIC_MYSQL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL_PUBLIC_MYSQL || undefined
   }
 })
 
